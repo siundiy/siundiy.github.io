@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[2018pjT2]]></title>
+    <url>%2F2019%2F03%2F18%2F2018pjT2%2F</url>
+    <content type="text"><![CDATA[龙虎斗 2018pjT2解题思路]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[2018pjT1]]></title>
     <url>%2F2019%2F03%2F18%2F2018pjT1%2F</url>
     <content type="text"><![CDATA[标题统计 noip pj T1解题思路模拟，读字符即可。 代码1234567891011121314151617#include &lt;iostream&gt;#include &lt;cstring&gt;int main()&#123; char s[10]; gets(s); int len = strlen(s); for(int i = 0; i &lt; n; ++i)&#123; if(s[i]&gt;='A'&amp;&amp;s[i]&lt;='Z') ans++; else if(s[i]&gt;='a'&amp;&amp;s[i]&lt;='z') ans++; else if(s[i]&gt;='0'&amp;&amp;s[i]&lt;='9') ans++; &#125;&#125;cout&lt;&lt;ans&lt;&lt;endl;return 0;]]></content>
       <tags>
         <tag>noip</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[test]]></title>
-    <url>%2F2019%2F03%2F16%2Ftest%2F</url>
-    <content type="text"><![CDATA[滑稽]]></content>
-      <tags>
-        <tag>test</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[这是第一篇博客]]></title>
-    <url>%2F2018%2F12%2F16%2F%E8%BF%99%E6%98%AF%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%2F</url>
-    <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
