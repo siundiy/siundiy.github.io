@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[2018pjT2]]></title>
-    <url>%2F2019%2F03%2F18%2F2018pjT2%2F</url>
-    <content type="text"><![CDATA[龙虎斗 2018pjT2解题思路]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[2018pjT1]]></title>
-    <url>%2F2019%2F03%2F18%2F2018pjT1%2F</url>
-    <content type="text"><![CDATA[标题统计 noip pj T1解题思路模拟，读字符即可。 代码1234567891011121314151617#include &lt;iostream&gt;#include &lt;cstring&gt;int main()&#123; char s[10]; gets(s); int len = strlen(s); for(int i = 0; i &lt; n; ++i)&#123; if(s[i]&gt;='A'&amp;&amp;s[i]&lt;='Z') ans++; else if(s[i]&gt;='a'&amp;&amp;s[i]&lt;='z') ans++; else if(s[i]&gt;='0'&amp;&amp;s[i]&lt;='9') ans++; &#125;&#125;cout&lt;&lt;ans&lt;&lt;endl;return 0;]]></content>
+    <title><![CDATA[网络流初识———EK]]></title>
+    <url>%2F2018%2F12%2F16%2F%E7%BD%91%E7%BB%9C%E6%B5%81%E5%88%9D%E8%AF%86%E2%80%94%E2%80%94EK%2F</url>
+    <content type="text"><![CDATA[前言当初刚开始学OI的时候，对各种奇怪的中高级算法抱有极大的兴趣（结果自然是看不懂-_-），网络流则是排在前列的几大算法之一（话说我是如何在连建图和SPFA都搞不明白的情况下看进去的…）。 如今过了一年（技术还是没有什么长进，该不会的还是不会），重新看了一篇网络流与费用流，似乎。。。有那么一点理解了，谨以此文，来表达我对网络流的一点看法。 什么是网络流？“网络流(network-flows)是一种类比水流的解决问题方法，与线性规划密切相关。”（来自百度百科） 举个例子，从某地要向某地输水，中间有许多粗细不同的管子，网络流算法解决的就是利用这些管子怎样使单位时间总输送量最大化的问题。 如何解决网络流问题？前置知识会建图，会dfs、bfs（似乎只需要这些。。。） 在开始之前…我们先来明晰几个概念： 点的属性： 源点(s): 一切的开始，入度为0 汇点(t): 一切的结束，出度为0 边的属性： 首先很明显图应该是DAG 流量(flow)：每条边能通过的最大值 如何建图？先不负责任的提出解决方案：对于每一条有向边，建一条与之方向相反（出入点相反），流量为0的边。 为什么？ 我们先来明确一下网络流的工作原理： 每一次搜索结束后，便会找到一条从源点到汇点的路径（这条路径叫增广路），且该路径上的边的流量均大于0，通过这条路可以增加的流量便是这条路径中的最小流量（自行理解一下）。然后在每次搜索结束时，将这条路径上的边的流量减去可以增加的流量。重复此过程直到找不出路径为止。 这种看起来就像是贪心的算法很明显是错的… 你搜索到的流量会与你搜索的路径的顺序有关，这怎么行！ 所以在建图时，要采用上文所述的方式，建一条反向边，并且在搜索完毕后减去增加流量的同时，在反向边加上增加的流量，这样在下一次搜索增广路时可以沿着反向边把流量回退，从而实现发现真正意义上的最大流的目的。 上代码！123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;algorithm&gt;#include &lt;cstdlib&gt;#include &lt;cstring&gt;#include &lt;queue&gt;using namespace std;const int maxn = 51000;const int inf = 1e9 + 7;int n;int p, m, f, u, v;int s, t;int num[maxn];struct edge&#123; int nt, to, flow, val; inline void set(int n, int t, int f)&#123; nt = n, to = t, flow = f; &#125;&#125;e[maxn &lt;&lt; 2];int h[maxn], c[maxn], tot = -1;void adde(int a, int b, int c)&#123;e[++tot].set(h[a], b, c), h[a] = tot; e[++tot].set(h[b], a, 0), h[b] = tot;&#125;queue &lt;int&gt; q;int dis[maxn], vis[maxn], pre[maxn], last[maxn], flow[maxn]; //存路径和更新的流量bool bfs(int s, int t)&#123; for(int i = 0; i &lt;= n; ++i)pre[i] = -1, vis[i] = 0; memset(last, -1, sizeof(last)); while(!q.empty())q.pop(); q.push(s); pre[s] = inf; flow[s] = inf; vis[s] = 1; while(!q.empty())&#123; int now = q.front(); q.pop(); for(int i = h[now]; i != -1; i = e[i].nt)&#123; int nex = e[i].to; if(e[i].flow &gt; 0 &amp;&amp; vis[nex] == 0)&#123; pre[nex] = now; last[nex] = i; if(e[i].flow &lt; flow[now]) flow[nex] = e[i].flow; else flow[nex] = flow[now]; if(!vis[nex])&#123; vis[nex] = 1; q.push(nex); &#125; &#125; &#125; &#125; return pre[t] != -1;&#125;int maxflow = 0;void ek(int s, int t)&#123; while(bfs(s, t))&#123; maxflow += flow[t]; for(int i = t; i != s; i = pre[i])&#123; e[last[i]].flow -= flow[t]; e[last[i] ^ 1].flow += flow[t]; &#125; &#125;&#125;int main()&#123; int s, t; scanf("%d%d%d%d", &amp;n, &amp;m, &amp;s, &amp;t); for(int i = 0; i &lt;= n; ++i) h[i] = -1; int u, v, f; for(int i = 1; i &lt;= m; ++i)&#123; scanf("%d%d%d", &amp;u,&amp;v,&amp;f); adde(u, v, f); &#125; ek(s, t); cout&lt;&lt;maxflow&lt;&lt;endl; return 0;&#125;]]></content>
       <tags>
-        <tag>noip</tag>
+        <tag>网络流</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2018%2F12%2F16%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
