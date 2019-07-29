@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="数据结构 线段树,">
+  <meta name="keywords" content="算法,">
 
 
 
@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="可爱的数据结构——线段树前言什么是数据结构呢？ 数据结构是计算机存储、组织数据的方式。数据结构是指相互之间存在一种或多种特定关系的数据元素的集合。通常情况下，精心选择的数据结构可以带来更高的运行或者存储效率。数据结构往往同高效的检索算法和索引技术有关  —来自百度百科  简单来说，数据结构就是通过合理的方式在计算机中存储数据，来达到修改、查询的目的。 几个例子（纯个人看法） 朴素的数据结构 数组（">
-<meta name="keywords" content="数据结构 线段树">
+<meta name="description" content="博客咕咕咕的时间有点长(似乎是太长了) 今天写一下模拟退火吧。。。发现了骗分的新大陆">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="可爱的数据结构——线段树">
-<meta property="og:url" content="http://yoursite.com/2019/03/30/可爱的数据结构———线段树/index.html">
+<meta property="og:title" content="新式骗分——模拟退火">
+<meta property="og:url" content="http://yoursite.com/2019/06/14/新式骗分——模拟退火/index.html">
 <meta property="og:site_name" content="巨大的滑稽">
-<meta property="og:description" content="可爱的数据结构——线段树前言什么是数据结构呢？ 数据结构是计算机存储、组织数据的方式。数据结构是指相互之间存在一种或多种特定关系的数据元素的集合。通常情况下，精心选择的数据结构可以带来更高的运行或者存储效率。数据结构往往同高效的检索算法和索引技术有关  —来自百度百科  简单来说，数据结构就是通过合理的方式在计算机中存储数据，来达到修改、查询的目的。 几个例子（纯个人看法） 朴素的数据结构 数组（">
+<meta property="og:description" content="博客咕咕咕的时间有点长(似乎是太长了) 今天写一下模拟退火吧。。。发现了骗分的新大陆">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-10T14:36:35.094Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/26/euJztA.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/26/eu1JDH.png">
+<meta property="og:updated_time" content="2019-07-29T12:27:56.392Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="可爱的数据结构——线段树">
-<meta name="twitter:description" content="可爱的数据结构——线段树前言什么是数据结构呢？ 数据结构是计算机存储、组织数据的方式。数据结构是指相互之间存在一种或多种特定关系的数据元素的集合。通常情况下，精心选择的数据结构可以带来更高的运行或者存储效率。数据结构往往同高效的检索算法和索引技术有关  —来自百度百科  简单来说，数据结构就是通过合理的方式在计算机中存储数据，来达到修改、查询的目的。 几个例子（纯个人看法） 朴素的数据结构 数组（">
+<meta name="twitter:title" content="新式骗分——模拟退火">
+<meta name="twitter:description" content="博客咕咕咕的时间有点长(似乎是太长了) 今天写一下模拟退火吧。。。发现了骗分的新大陆">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/26/euJztA.png">
 
 
 
@@ -120,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/30/可爱的数据结构———线段树/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/14/新式骗分——模拟退火/">
 
 
 
 
 
-  <title>可爱的数据结构——线段树 | 巨大的滑稽</title>
+  <title>新式骗分——模拟退火 | 巨大的滑稽</title>
   
 
 
@@ -233,7 +236,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/30/可爱的数据结构———线段树/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/14/新式骗分——模拟退火/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="siundiy">
@@ -250,7 +253,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">可爱的数据结构——线段树</h1>
+          <h1 class="post-title" itemprop="name headline">新式骗分——模拟退火</h1>
         
 
         <div class="post-meta">
@@ -262,8 +265,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-30T08:03:19+08:00">
-                2019-03-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-14T00:22:02+08:00">
+                2019-06-14
               </time>
             
 
@@ -300,32 +303,34 @@
       
 
       
-        <h1 id="可爱的数据结构——线段树"><a href="#可爱的数据结构——线段树" class="headerlink" title="可爱的数据结构——线段树"></a>可爱的数据结构——线段树</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="什么是数据结构呢？"><a href="#什么是数据结构呢？" class="headerlink" title="什么是数据结构呢？"></a>什么是数据结构呢？</h3><blockquote>
-<p>数据结构是计算机存储、组织数据的方式。数据结构是指相互之间存在一种或多种特定关系的数据元素的集合。通常情况下，精心选择的数据结构可以带来更高的运行或者存储效率。数据结构往往同高效的检索算法和索引技术有关 </p>
-<p>—来自百度百科</p>
+        <p>博客咕咕咕的时间有点长(似乎是太长了)</p>
+<p>今天写一下模拟退火吧。。。发现了骗分的新大陆</p>
+<!-- （!--似乎是太长了--!） -->
+<a id="more"></a>
+<h1 id="一：背景"><a href="#一：背景" class="headerlink" title="一：背景"></a>一：背景</h1><h3 id="模拟退火解决的是一种什么样的问题呢？"><a href="#模拟退火解决的是一种什么样的问题呢？" class="headerlink" title="模拟退火解决的是一种什么样的问题呢？"></a>模拟退火解决的是一种什么样的问题呢？</h3><blockquote>
+<p>模拟退火算法（Simulate Anneal，SA）是一种通用概率演算法， <strong>用来在一个大的搜寻空间内找寻命题的最优解。</strong> 模拟退火是由S.Kirkpatrick, C.D.Gelatt和&gt;M.P.Vecchi在1983年所发明的。V.Čern&yacute;在1985年也独立发明此演算法。模&gt;拟退火算法是解决TSP问题的有效方法之一。<br>—— 来自百度百科</p>
 </blockquote>
-<p>简单来说，数据结构就是通过合理的方式在计算机中存储数据，来达到修改、查询的目的。</p>
-<p><strong>几个例子</strong><br>（纯个人看法）</p>
-<p>朴素的数据结构</p>
-<pre><code>数组（-_-）
-链表
-队列
-栈
-</code></pre><p>看起来高端一些的数据结构</p>
-<pre><code>矩阵
-哈希表（hash）
-堆
-树状数组
-</code></pre><p>更高级的数据结构    </p>
-<pre><code>线段树
-各种平衡树
-主席树
-</code></pre><h3 id="什么是线段树呢？"><a href="#什么是线段树呢？" class="headerlink" title="什么是线段树呢？"></a>什么是线段树呢？</h3><blockquote>
-<p>线段树是一种二叉搜索树，与区间树相似，它将一个区间划分成一些单元区间，每个单元区间对应线段树中的一个叶结点。</p>
-<p>—依然来自百度百科</p>
+<p>照例引用百度百科。</p>
+<p> 其实模拟退火就是一种解决问题的普遍方法。</p>
+<h1 id="二：爬山算法及其优化"><a href="#二：爬山算法及其优化" class="headerlink" title="二：爬山算法及其优化"></a>二：爬山算法及其优化</h1><p> 针对一个求最值的问题，我们可以采用一种贪心的方法，被称作“爬山算法”。爬山算法指的就是每一步都将当前节点的值与其邻居节点比较，如果有更优值就取，否则就维持当前的解。很明显，这个算法可以找到一个局部最优解。但是其有一个致命的缺陷，那就是只能找到局部最优解，但是并不能保证找到的解是一个全局最优解。</p>
+<p> <img src="https://s2.ax1x.com/2019/07/26/euJztA.png" alt="euJztA.png"></p>
+<p> 就比如说上面这个图，当我们在D点出发，使用爬山算法，即可到达B点，很明显这既是局部最优解，又是全局最优解。但是如果从C点或E点出发，我们最后会到达A点，（<del>然后愉快的WA</del>）<br> 这种做法很明显是不行的，那么怎么使其变的正确 或者说大约正确呢？<br> 上文提到的三位大佬想出来了一个绝妙的解决方案：<br> 使用随机算法，使得每一次搜索到比当前解差的解时，都有一定概率接受这个解。但是光随机也是不行的，所以随着循环次数的增加，会不断降低接受更劣解的概率。这就是模拟退火的主要思想。</p>
+<h1 id="三：具体实现"><a href="#三：具体实现" class="headerlink" title="三：具体实现"></a>三：具体实现</h1><p> 先定义一下变量及数组</p>
+<blockquote>
+<p>t: 温度 决定了接受更劣解的概率 与down一起决定了退火的时长 更高的初始温度意味着更精确的答案， 但也意味着需要更多的时间<br><br>down: 每一次循环降低t的系数，一般是 0.9 ~ 1 的一个实数<br><br>delta: 当前解与最优解的差<br><br>now_w: 目前得到的最优解<br><br>ew：当前解</p>
 </blockquote>
-<p>换句话说，就是把一个区间变成一个多层的树形结构，以一种二分与递归的思想实现高效的区间操作</p>
-<h2 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h2><p>写一个数据结构，要求支持在O(logn)的时间复杂度内支持区间加与区间和。</p>
+<h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h2><p>1.透过最优解计算出当前解。<br><br>2.如果获得了更优解 直接接受<br>3.更劣解有概率接受<br> <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">void</span> <span class="title">sa</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> t = <span class="number">3000</span>;</span><br><span class="line">	<span class="keyword">while</span>(t &gt; <span class="number">1e-15</span>)&#123;</span><br><span class="line">		<span class="keyword">double</span> ex = ans_x + (rand() * <span class="number">2</span> - RAND_MAX) * t;</span><br><span class="line">		<span class="keyword">double</span> ey = ans_y + (rand() * <span class="number">2</span> - RAND_MAX) * t;</span><br><span class="line">		<span class="keyword">double</span> ew = get_eng(ex, ey);<span class="comment">//构造解的函数</span></span><br><span class="line">		<span class="keyword">double</span> delta = ew - ans_w;</span><br><span class="line">		<span class="keyword">if</span>(delta &lt; <span class="number">0</span>)&#123;</span><br><span class="line">			ans_x = ex;</span><br><span class="line">			ans_y = ey;</span><br><span class="line">			ans_w = ew;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">exp</span>(-delta / t) * RAND_MAX &gt; rand())&#123;</span><br><span class="line">			ans_x = ex;</span><br><span class="line">			ans_y = ey;</span><br><span class="line">		&#125;</span><br><span class="line">		t *= down;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>来自luoguP1337 [JSOI2004]平衡点 / 吊打XXX</p>
+</blockquote>
+<p> 值得注意的几个点：</p>
+<blockquote>
+<p>(rand() <em> 2 - RAND_MAX) </em> t : 求新解的方法<br><br>exp(-delta / t) * RAND_MAX &gt; rand()  : 来自前人的玄学判断</p>
+</blockquote>
+<p> <img src="https://s2.ax1x.com/2019/07/26/eu1JDH.png" alt="eu1JDH.png"></p>
+<blockquote>
+<p>模拟退火流程图</p>
+</blockquote>
 
       
     </div>
@@ -343,7 +348,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数据结构-线段树/" rel="tag"># 数据结构 线段树</a>
+            <a href="/tags/算法/" rel="tag"># 算法</a>
           
         </div>
       
@@ -356,8 +361,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/16/网络流初识——EK/" rel="next" title="网络流初识———EK">
-                <i class="fa fa-chevron-left"></i> 网络流初识———EK
+              <a href="/2019/03/30/可爱的数据结构———线段树/" rel="next" title="可爱的数据结构——线段树">
+                <i class="fa fa-chevron-left"></i> 可爱的数据结构——线段树
               </a>
             
           </div>
@@ -365,10 +370,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/14/新式骗分——模拟退火/" rel="prev" title="新式骗分——模拟退火">
-                新式骗分——模拟退火 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -491,7 +492,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#可爱的数据结构——线段树"><span class="nav-number">1.</span> <span class="nav-text">可爱的数据结构——线段树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是数据结构呢？"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是数据结构呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是线段树呢？"><span class="nav-number">1.1.2.</span> <span class="nav-text">什么是线段树呢？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个例子"><span class="nav-number">1.2.</span> <span class="nav-text">一个例子</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一：背景"><span class="nav-number">1.</span> <span class="nav-text">一：背景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟退火解决的是一种什么样的问题呢？"><span class="nav-number">1.0.1.</span> <span class="nav-text">模拟退火解决的是一种什么样的问题呢？</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#二：爬山算法及其优化"><span class="nav-number">2.</span> <span class="nav-text">二：爬山算法及其优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三：具体实现"><span class="nav-number">3.</span> <span class="nav-text">三：具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤："><span class="nav-number">3.1.</span> <span class="nav-text">步骤：</span></a></li></ol></li></div>
             
 
           </div>
