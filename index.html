@@ -312,7 +312,7 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       <h1 id="7-29-“简单”DP"><a href="#7-29-“简单”DP" class="headerlink" title="7.29 “简单”DP"></a>7.29 “简单”DP</h1><h2 id="luogu-P2467-SDOI2010-地精部落"><a href="#luogu-P2467-SDOI2010-地精部落" class="headerlink" title="luogu P2467 [SDOI2010]地精部落"></a>luogu P2467 [SDOI2010]地精部落</h2><p><a href="https://www.luogu.org/problem/P2467" target="_blank" rel="noopener">题目传送门</a></p>
-<h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>一个序列符合要求，当且仅当其是一个$1~n$的排列，且每一个$a[i]$ <br><br>满足$a[i-1]\le a[i]$且$a[i]\ge a[i+1]$ <br><br>或者满足$a[i-1]\ge a[i]$且$a[i]\le a[i+1]$ <br><br>求长度为$n$的合法序列方案数</p>
+<h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>一个序列符合要求，当且仅当其是一个$1 \sim n$的排列，且每一个$a[i]$ <br><br>满足$a[i-1]\le a[i]$且$a[i]\ge a[i+1]$ <br><br>或者满足$a[i-1]\ge a[i]$且$a[i]\le a[i+1]$ <br><br>求长度为$n$的合法序列方案数</p>
 <h3 id="大体思路"><a href="#大体思路" class="headerlink" title="大体思路"></a>大体思路</h3><p>神仙题。。。。<br><br><del>显然</del>有以下性质：</p>
 <blockquote>
 <p>1.当$i$与$i+1$不相邻时，交换$i$与$i+1$仍会得到一个合法的解<br><br>如:$3 2 4 1 5 \rightarrow 3 1 4 2 5$ <br><br>2.一串序列$a[i]$，$i\in [1,n]$满足条件时，则$(i+1)-a[i]$亦满足条件<br><br>如:$3 2 4 1 5 \rightarrow 3 4 2 5 1$ <br><br>3.满足条件的序列具有对称性 <br><br>如:$3 2 4 1 5 \rightarrow 5 1 4 2 3$ <br></p>
