@@ -323,9 +323,7 @@
 <h1 id="三：具体实现"><a href="#三：具体实现" class="headerlink" title="三：具体实现"></a>三：具体实现</h1><p> 先定义一下变量及数组</p>
 <blockquote>
 <p>t: 温度 决定了接受更劣解的概率 与down一起决定了退火的时长 更高的初始温度意味着更精确的答案， 但也意味着需要更多的时间<br><br>down: 每一次循环降低t的系数，一般是 0.9 ~ 1 的一个实数<br><br>delta: 当前解与最优解的差<br><br>now_w: 目前得到的最优解<br><br>ew：当前解</p>
-</blockquote>
 <h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h2><p>1.透过最优解计算出当前解。<br><br>2.如果获得了更优解 直接接受<br>3.更劣解有概率接受<br> <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">void</span> <span class="title">sa</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> t = <span class="number">3000</span>;</span><br><span class="line">	<span class="keyword">while</span>(t &gt; <span class="number">1e-15</span>)&#123;</span><br><span class="line">		<span class="keyword">double</span> ex = ans_x + (rand() * <span class="number">2</span> - RAND_MAX) * t;</span><br><span class="line">		<span class="keyword">double</span> ey = ans_y + (rand() * <span class="number">2</span> - RAND_MAX) * t;</span><br><span class="line">		<span class="keyword">double</span> ew = get_eng(ex, ey);<span class="comment">//构造解的函数</span></span><br><span class="line">		<span class="keyword">double</span> delta = ew - ans_w;</span><br><span class="line">		<span class="keyword">if</span>(delta &lt; <span class="number">0</span>)&#123;</span><br><span class="line">			ans_x = ex;</span><br><span class="line">			ans_y = ey;</span><br><span class="line">			ans_w = ew;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">exp</span>(-delta / t) * RAND_MAX &gt; rand())&#123;</span><br><span class="line">			ans_x = ex;</span><br><span class="line">			ans_y = ey;</span><br><span class="line">		&#125;</span><br><span class="line">		t *= down;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
 <p>来自luoguP1337 [JSOI2004]平衡点 / 吊打XXX</p>
 </blockquote>
 <p> 值得注意的几个点：</p>
@@ -386,6 +384,14 @@
           
             <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
           
+        </a>
+      
+    
+      
+        <a class="qrcode" rel="external nofollow noopener noreferrer" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuElEQVR42u3aQW4bMRAEQP3/087VOWjdPUM6QlB7EuSVyKKBJdUzr1d8fX27vr+T3JNcsxGPXXh4eHiLqb8b+Hkqz8O/m2Iy9WQ+PywWHh4e3jVePq3nAfLpPo+VvBMtMR4eHt6H8fJ3ZpsNHh4e3v/Eu7E9tEd8PDw8vH/La7+uHWy/SVzPWvDw8PC6elNURfqc11fqe3h4eHjrqnpe4H8uVrVBw7HZ4uHh4V3g5Q/cnL0p828aF97eiYeHh3eUN9sSnqOKtuSfbC35rP56jYeHh3eZty96bZYjISXvv2b/Bzw8PLyu2r76wd9GFW3zQbLZJG0QeHh4eKd4efCaBAftw3q2TAUYDw8P7wKvDU+jCGBx+E4WvQ0p8PDw8M7y8gL/7Ig8i27zAtgPIQUeHh7eNV4elc4apzZ/zRcaDw8P7/d5Rda7eKDnxbZZO8LbGBcPDw/vKC+PVvMmgDZiyEnFrPDw8PCu8ZLy1Sx+bb8/73SINjM8PDy8C7zNA30WYSSfyqceNSvg4eHhXePN4onZZpA3E8zi3beRBB4eHt5R3qmCfVvQagtj9aEfDw8P7wJvVvRq70k+td8SooM1Hh4e3oLXFvVn5at2yZKyXBSa4OHh4V3jbQB5oJC3ILSxRVH6wsPDw1vzWsCpSSf3t4woCsHDw8M7xNs84vPDdAvbHO6LGh0eHh7egvdMnS1Ke/DdbxVF0xUeHh7eId4+hN3kAMNHf3KkxsPDwzvE+yqvJIbI27ZmzQR50IyHh4d3g9e2NOXR6gyctyMk4+Lh4eHd4+1jhbbw3x6+ZwU5PDw8vNu8fJj8YN0evl/rK8pa8PDw8D6Atz9ktzHur24MeHh4eGteG+nOIuBN8QwPDw/vd3izo/CsfLUJINqyGR4eHt4NXv4jPwkj2uaAWYnrQE0PDw8Pb8L7A+pCIhamhAuyAAAAAElFTkSuQmCC">
+        
+          <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png">
+        
         </a>
       
     
@@ -497,7 +503,7 @@
   <div class="content pure">
     
       <div class="avatar">
-        <img class="avatar" src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png">
+        <img class="avatar" src="https://s2.ax1x.com/2019/08/04/e6oVxK.jpg">
       </div>
     
     
@@ -505,22 +511,17 @@
       <div class="social-wrapper">
         
           
-            <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            <a href="mailto:zh_siundiy@foxmail.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
             </a>
           
         
           
-            <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            <a href="https://github.com/siundiy" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
             </a>
           
         
           
-            <a href="https://github.com/xaoxuu" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://music.163.com/#/user/home?id=63035382" class="social fas fa-headphones-alt flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            <a href="https://music.163.com/#/user/home?id=1449009969" class="social fas fa-headphones-alt flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
             </a>
           
         
@@ -639,7 +640,7 @@
 </header>
 
     <div class="content pure">
-      <a href="/tags/数据结构-线段树/" style="font-size: 14px; color: #999">数据结构 线段树</a> <a href="/tags/算法/" style="font-size: 14px; color: #999">算法</a> <a href="/tags/网络流/" style="font-size: 14px; color: #999">网络流</a> <a href="/tags/题解/" style="font-size: 14px; color: #999">题解</a>
+      <a href="/tags/DP/" style="font-size: 14px; color: #999">DP</a> <a href="/tags/数据结构-线段树/" style="font-size: 14px; color: #999">数据结构 线段树</a> <a href="/tags/算法/" style="font-size: 14px; color: #999">算法</a> <a href="/tags/网络流/" style="font-size: 14px; color: #999">网络流</a> <a href="/tags/题解/" style="font-size: 24px; color: #555">题解</a>
     </div>
   </section>
 
@@ -658,7 +659,7 @@
 <header class="pure">
   <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
   
-    <a class="rightBtn" rel="external nofollow noopener noreferrer" target="_blank" href="https://music.163.com/#/user/home?id=63035382" title="https://music.163.com/#/user/home?id=63035382">
+    <a class="rightBtn" rel="external nofollow noopener noreferrer" target="_blank" href="https://music.163.com/#/user/home?id=1449009969" title="https://music.163.com/#/user/home?id=1449009969">
     <i class="far fa-heart fa-fw"></i></a>
   
 </header>
@@ -666,7 +667,7 @@
     <div class="content pure">
       
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
-  <div class="aplayer" data-theme="#1BCDFC" data-mode="circulation" data-server="netease" data-type="playlist" data-id="2615636388" data-volume="0.7">
+  <div class="aplayer" data-theme="#1BCDFC" data-mode="circulation" data-server="netease" data-type="playlist" data-id="2479241061" data-volume="0.7">
   </div>
   <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
@@ -690,22 +691,17 @@
     <div class="social-wrapper">
       
         
-          <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          <a href="mailto:zh_siundiy@foxmail.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
           </a>
         
       
         
-          <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          <a href="https://github.com/siundiy" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
           </a>
         
       
         
-          <a href="https://github.com/xaoxuu" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-          </a>
-        
-      
-        
-          <a href="https://music.163.com/#/user/home?id=63035382" class="social fas fa-headphones-alt flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          <a href="https://music.163.com/#/user/home?id=1449009969" class="social fas fa-headphones-alt flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
           </a>
         
       

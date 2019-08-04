@@ -227,9 +227,124 @@
         
           
         
+          
+        
       
     
     
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/08/04/2019-7-29题解综合/">
+      2019-7题解综合2——DP
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>siundiy</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-08-04</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="7-29-“简单”DP"><a href="#7-29-“简单”DP" class="headerlink" title="7.29 “简单”DP"></a>7.29 “简单”DP</h1><h2 id="luogu-P2467-SDOI2010-地精部落"><a href="#luogu-P2467-SDOI2010-地精部落" class="headerlink" title="luogu P2467 [SDOI2010]地精部落"></a>luogu P2467 [SDOI2010]地精部落</h2><p><a href="https://www.luogu.org/problem/P2467" target="_blank" rel="noopener">题目传送门</a></p>
+<h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>一个序列符合要求，当且仅当其是一个$1~n$的排列，且每一个$a[i]$ <br><br>满足$a[i-1]\le a[i]$且$a[i]\ge a[i+1]$ <br><br>或者满足$a[i-1]\ge a[i]$且$a[i]\le a[i+1]$ <br><br>求长度为$n$的合法序列方案数</p>
+<h3 id="大体思路"><a href="#大体思路" class="headerlink" title="大体思路"></a>大体思路</h3><p>神仙题。。。。<br><br><del>显然</del>有以下性质：</p>
+<blockquote>
+<p>1.当$i$与$i+1$不相邻时，交换$i$与$i+1$仍会得到一个合法的解<br><br>如:$3 2 4 1 5 \rightarrow 3 1 4 2 5$ <br><br>2.一串序列$a[i]$，$i\in [1,n]$满足条件时，则$(i+1)-a[i]$亦满足条件<br><br>如:$3 2 4 1 5 \rightarrow 3 4 2 5 1$ <br><br>3.满足条件的序列具有对称性 <br><br>如:$3 2 4 1 5 \rightarrow 5 1 4 2 3$ <br></p>
+</blockquote>
+<p>则设$dp[i][j]$表示当前为前$i$个数的<strong>排列</strong>，且首位是$j$且为<strong>山峰</strong>的方案数。<br></p>
+<script type="math/tex; mode=display">
+\!
+\begin{split}
+& 由性质1可知:
+\!\begin{cases}
+\text{当$j$与$j-1$不相邻时，$dp[i][j]=dp[i][j-1]$}\\
+\end{cases}\\
+& 由性质2可知:
+\!\begin{cases}
+\text{首位做山峰的方案数=首位做山谷的方案数}\\
+\downarrow \\
+\text{(也就是说最后的答案是$2*\sum_{i=1}^n dp[n][i]$)}\\
+\\
+\text{当$j$与$j-1$相邻时，方案数即为$i-1$个数，$j-1$为首位且为山谷的方案数}\\
+\end{cases}
+\end{split}</script>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/题解/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>题解</a>
+        
+          <a href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>DP</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
       
         
           <div class="post-wrapper">
@@ -352,7 +467,7 @@
   <div class="content pure">
     
       <div class="avatar">
-        <img class="avatar" src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png">
+        <img class="avatar" src="https://s2.ax1x.com/2019/08/04/e6oVxK.jpg">
       </div>
     
     
@@ -360,22 +475,17 @@
       <div class="social-wrapper">
         
           
-            <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            <a href="mailto:zh_siundiy@foxmail.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
             </a>
           
         
           
-            <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            <a href="https://github.com/siundiy" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
             </a>
           
         
           
-            <a href="https://github.com/xaoxuu" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://music.163.com/#/user/home?id=63035382" class="social fas fa-headphones-alt flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+            <a href="https://music.163.com/#/user/home?id=1449009969" class="social fas fa-headphones-alt flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
             </a>
           
         
@@ -480,7 +590,7 @@
 </header>
 
     <div class="content pure">
-      <a href="/tags/数据结构-线段树/" style="font-size: 14px; color: #999">数据结构 线段树</a> <a href="/tags/算法/" style="font-size: 14px; color: #999">算法</a> <a href="/tags/网络流/" style="font-size: 14px; color: #999">网络流</a> <a href="/tags/题解/" style="font-size: 14px; color: #999">题解</a>
+      <a href="/tags/DP/" style="font-size: 14px; color: #999">DP</a> <a href="/tags/数据结构-线段树/" style="font-size: 14px; color: #999">数据结构 线段树</a> <a href="/tags/算法/" style="font-size: 14px; color: #999">算法</a> <a href="/tags/网络流/" style="font-size: 14px; color: #999">网络流</a> <a href="/tags/题解/" style="font-size: 24px; color: #555">题解</a>
     </div>
   </section>
 
@@ -499,7 +609,7 @@
 <header class="pure">
   <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
   
-    <a class="rightBtn" rel="external nofollow noopener noreferrer" target="_blank" href="https://music.163.com/#/user/home?id=63035382" title="https://music.163.com/#/user/home?id=63035382">
+    <a class="rightBtn" rel="external nofollow noopener noreferrer" target="_blank" href="https://music.163.com/#/user/home?id=1449009969" title="https://music.163.com/#/user/home?id=1449009969">
     <i class="far fa-heart fa-fw"></i></a>
   
 </header>
@@ -507,7 +617,7 @@
     <div class="content pure">
       
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
-  <div class="aplayer" data-theme="#1BCDFC" data-mode="circulation" data-server="netease" data-type="playlist" data-id="2615636388" data-volume="0.7">
+  <div class="aplayer" data-theme="#1BCDFC" data-mode="circulation" data-server="netease" data-type="playlist" data-id="2479241061" data-volume="0.7">
   </div>
   <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
@@ -531,22 +641,17 @@
     <div class="social-wrapper">
       
         
-          <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          <a href="mailto:zh_siundiy@foxmail.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
           </a>
         
       
         
-          <a href="mailto:me@xaoxuu.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          <a href="https://github.com/siundiy" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
           </a>
         
       
         
-          <a href="https://github.com/xaoxuu" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-          </a>
-        
-      
-        
-          <a href="https://music.163.com/#/user/home?id=63035382" class="social fas fa-headphones-alt flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          <a href="https://music.163.com/#/user/home?id=1449009969" class="social fas fa-headphones-alt flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
           </a>
         
       
