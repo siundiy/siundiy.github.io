@@ -605,31 +605,14 @@
     <div class="article-entry" itemprop="articleBody">
       <h1 id="可爱的数据结构——线段树"><a href="#可爱的数据结构——线段树" class="headerlink" title="可爱的数据结构——线段树"></a>可爱的数据结构——线段树</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="什么是数据结构呢？"><a href="#什么是数据结构呢？" class="headerlink" title="什么是数据结构呢？"></a>什么是数据结构呢？</h3><blockquote>
 <p>数据结构是计算机存储、组织数据的方式。数据结构是指相互之间存在一种或多种特定关系的数据元素的集合。通常情况下，精心选择的数据结构可以带来更高的运行或者存储效率。数据结构往往同高效的检索算法和索引技术有关 </p>
-<p>—-来自百度百科</p>
-</blockquote>
-<p>简单来说，数据结构就是通过合理的方式在计算机中存储数据，来达到修改、查询的目的。</p>
-<p><strong>几个例子</strong><br>（纯个人看法）</p>
-<p>朴素的数据结构</p>
-<pre><code>数组（-_-）
-链表
-队列
-栈
-</code></pre><p>看起来高端一些的数据结构</p>
-<pre><code>矩阵
-哈希表（hash）
-堆
-树状数组
-</code></pre><p>更高级的数据结构    </p>
-<pre><code>线段树
-各种平衡树
-主席树
-</code></pre><h3 id="什么是线段树呢？"><a href="#什么是线段树呢？" class="headerlink" title="什么是线段树呢？"></a>什么是线段树呢？</h3><blockquote>
-<p>线段树是一种二叉搜索树，与区间树相似，它将一个区间划分成一些单元区间，每个单元区间对应线段树中的一个叶结点。</p>
-<p>—-依然来自百度百科</p>
-</blockquote>
-<p>换句话说，就是把一个区间变成一个多层的树形结构，以一种二分与递归的思想实现高效的区间操作</p>
-<h2 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h2><p>写一个数据结构，要求支持在O(logn)的时间复杂度内支持区间加与区间和。</p>
-
+<p>—-来自百度百科<br></p></blockquote>
+      
+        <div class="readmore">
+          <a href="/2019/03/30/可爱的数据结构———线段树/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
       
     </div>
     
@@ -1221,5 +1204,21 @@
 
 
   <script>setLoadingBarProgress(100);</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 </body>
 </html>
