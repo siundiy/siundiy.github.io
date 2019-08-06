@@ -3,7 +3,10 @@
   <entry>
     <title><![CDATA[评论的使用方法]]></title>
     <url>%2F2019%2F08%2F06%2F%E8%AF%84%E8%AE%BA%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[评论系统来自valine ![ehlXX8.png](https://s2.ax1x.com/2019/08/06/ehlXX8.png) 1. 昵称顾名思义就是你评论之后显示的名称啦 2. 邮箱获取头像用的 请自行登录或注册Gravatar，然后修改自己的头像。（详情请咨询度娘） 评论的时候，留下在Gravatar注册时所使用的邮箱即可。 3. 链接可选项，填写后会在你的评论上自动生成一个链接，效果如图： ![eh8CQ0.png](https://s2.ax1x.com/2019/08/06/eh8CQ0.png) 4. 内容支持emoji与markdown 全部完成后点击发布即可！]]></content>
+      <tags>
+        <tag>杂项</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[2019-7题解综合2——DP]]></title>
