@@ -313,119 +313,22 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><del>这种神仙玩意儿一听就非常高端。</del>但是如果认真学习的话，还是比想象中的要简单的。<br><br><del>话说本来想拿去装13的却被初三小朋友痛斥过于娱乐…</del></p>
-<h1 id="前置1：数论、积性函数"><a href="#前置1：数论、积性函数" class="headerlink" title="前置1：数论、积性函数"></a>前置1：数论、积性函数</h1><h2 id="什么叫数论函数？"><a href="#什么叫数论函数？" class="headerlink" title="什么叫数论函数？"></a>什么叫数论函数？</h2><blockquote>
-<p>在数论上，算术函数（或称数论函数）指定义域为正整数、陪域为复数的函数<br><br>——来自百度百科</p>
-</blockquote>
-<p><del>无法识别的表达方式…</del><br><br>换句话说，数论函数就相当于<strong>定义域为$N^+$的函数</strong>。<br><br><strong>注1：</strong>陪域就相当于可以包含值域所有的集合。<br></p>
-<p><fancybox><br><img src="https://s2.ax1x.com/2019/08/09/eqRVVs.png" alt="eqRVVs.png">
-</fancybox><br>如图，如果A是$f(x)$的值域，那么B与C都可以是$f(x)$的陪域。<br><br><strong>注2：</strong>复数是指形如$z=a+bi$的数…为全部实数与虚数的集合。</p>
-<h2 id="什么叫积性函数？"><a href="#什么叫积性函数？" class="headerlink" title="什么叫积性函数？"></a>什么叫积性函数？</h2><p>指当$gcd(a,b)=1$时满足$f(ab)=f(a)f(b)$的数论函数。<br><br>还有一种更加特殊的情况，即d对于任意$a,b \in Z$时都满足$f(ab)=f(a)f(b)$的函数，被称为完全积性函数。<br><br>由于完全积性函数相较于积性函数并没有什么更加<del>可爱</del>的性质，故下文仅对积性函数进行讨论。</p>
-<h2 id="有哪些常见的积性函数？"><a href="#有哪些常见的积性函数？" class="headerlink" title="有哪些常见的积性函数？"></a>有哪些常见的积性函数？</h2><blockquote>
-<p>$\mu(n)$：<strong>本文主角，莫比乌斯函数。</strong><br></p>
-<script type="math/tex; mode=display">
-\mu(n)=
-\begin{cases}
-\text{1}&&\text{(n==1)}\\
-\text{$(-1)^k$}&&\text{(当$n=p_1*p_2*...*p_k$时)}\\
-\text{0}&&\text{(当n存在平方因子时)}\\
-\end{cases}</script><p>$1(n)$：<strong>不变的函数，恒定值为1</strong><br><br>$\epsilon(n)$：<strong>单位元，当且仅当$n=1$时$\epsilon(n)=1$，其他情况$\epsilon(n)=0$，即</strong></p>
-<script type="math/tex; mode=display">
-\epsilon(n)=
-\begin{cases}
-\text{1}&&\text{(n==1)}\\
-\text{0}&&\text{otherwise}
-\end{cases}</script><p>$id(n)$：<strong>就是$n$的大小，即$id[n]=n$</strong> <br><br>$\varphi(n)$：欧拉函数，指小于$n$的正整数中与$n$互质数的数目。<br><br>$gcd(n,k)$：当$k$固定时，$n$的最大公因子。<br><br>$d(n)$：$n$的正因子数目<br><br>$σ(n)$：$n$的所有正因子之和<br></p>
-</blockquote>
-<p>其中加粗的函数与莫比乌斯反演有比较重要的关系。</p>
-<h2 id="积性函数的性质"><a href="#积性函数的性质" class="headerlink" title="积性函数的性质"></a>积性函数的性质</h2><p>1.对于任意积性函数$f$，$f(1)=1$。<br></p>
-<blockquote>
-<p>显然，$f(n)=f(n)f(1)\rightarrow f(1)=1$</p>
-</blockquote>
-<p>2.对于一个大于1的正整数$N$，设$N=\prod p_i ^ {a_i}$且$\forall p_i \not= p_j$（就是将$N$质因数分解，则对于一个积性函数$f$：</p>
-<script type="math/tex; mode=display">
-    f(n)=f(\prod p_i ^ {a_i})=\prod f(p_i ^ {a_i})</script><blockquote>
-<p>根据定义显然。</p>
-</blockquote>
-<h1 id="前置2：狄利克雷卷积"><a href="#前置2：狄利克雷卷积" class="headerlink" title="前置2：狄利克雷卷积"></a>前置2：狄利克雷卷积</h1><p><del>又是一个听起来非常高端的玩意儿…</del><br><br>设$f(n), g(n), h(n)$为数论函数，且</p>
-<script type="math/tex; mode=display">h(n)=f(n)*g(n)</script><p>，则</p>
-<script type="math/tex; mode=display">h(n)=\sum_{d|n}f(d)g(\frac{n}{d})</script><h2 id="几条性质"><a href="#几条性质" class="headerlink" title="几条性质"></a>几条性质</h2><p>1.交换律：$(f<em>g)(n)=(g</em>f)(n)$ <br><br>2.结合律：$((f<em>g)</em>h)(n)=(f<em>(g</em>h))(n)$ <br><br>3.分配律：定义两个数论函数$f(n),g(n)$的加法为逐项相加，即$(f+g)(n)=f(n)+g(n)$，那么$(f+g)<em>h=f</em>h+g<em>h$ <br><br>4.积性函数$</em>$积性函数$=$积性函数，即当$f(n),g(n)$为积性函数时，$h(n)=f(n)*g(n)$也为积性函数。<br><br>证明：</p>
-<blockquote>
-<p>设：$n=a*b$，且$gcd(a,b)=1$，则</p>
-<script type="math/tex; mode=display">
-\begin{split}
-h(n)
-&&=\sum_{d|n}f(d)g(\frac{n}{d})\\
-&&=\sum_{d1|a}\sum_{d2|b}f(d1d2)g(\frac{a}{d1}\frac{b}{d2})\\
-&&=\sum_{d1|a}\sum_{d2|b}f(d1)f(d2)g(\frac{a}{d1})g(\frac{b}{d2})\\
-&&=\sum_{d1|a}f(d1)g(\frac{a}{d1})\sum_{d2|b}f(d2)g(\frac{b}{d2})\\
-&&=h(a)*h(b)\\
-\end{split}</script></blockquote>
-<p>5.$(f*e)=f$ <br><br>证明：</p>
-<blockquote>
-<script type="math/tex; mode=display">
-\begin{split}
-(f*e)(n)&&=e*f(n)\\
-&&=\sum_{d|n}e(d)*f(\frac{n}{d})\\
-&&=f(n)\\
-\end{split}</script></blockquote>
-<p><strong>注：</strong>非积性函数亦可卷积。</p>
-<h1 id="前置3：莫比乌斯函数"><a href="#前置3：莫比乌斯函数" class="headerlink" title="前置3：莫比乌斯函数"></a>前置3：莫比乌斯函数</h1><h2 id="几条性质-1"><a href="#几条性质-1" class="headerlink" title="几条性质"></a>几条性质</h2><p>1.$\mu(n)$是积性函数<br><br>证明：</p>
-<blockquote>
-<p>因为</p>
-<script type="math/tex; mode=display">
-\begin{split}
-\begin{cases}
-\mu(p_i^{a_i})=-1&&(a_i==-1)\\
-\mu(p_i^{a_i})=0&&(a_i\ge 2)\\
-\end{cases}
-\end{split}</script><p>所以</p>
-<script type="math/tex; mode=display">
-\mu(n)=\prod p_i^{a_i}</script><p>由积性函数性质2得：$\mu$是积性函数。<br></p>
-</blockquote>
-<p>2.$\mu*1=\epsilon$ <br><br>证明：</p>
-<blockquote>
-<p>因为$\mu$、$1$、$\epsilon$均为积性函数<br><br>所以原命题转化为证明：</p>
-<script type="math/tex; mode=display">
-(\mu * 1)(p^k)=\epsilon(p^k)</script><p>其中</p>
-<script type="math/tex; mode=display">
-(\mu * 1)(p^k)=\sum_{j=0}^{k} \mu(p^j)1(p^{k-j})</script><p>而</p>
-<script type="math/tex; mode=display">
-\begin{split}
-\mu(p^j)=
-\begin{cases}
-1 &&(j==0)\\
--1 &&(j==1)\\
-0 &&(j\ge 2)\\
-\end{cases}
-\end{split}</script><p>所以</p>
-<script type="math/tex; mode=display">
-\begin{split}
-\sum_{j=0}^{k} \mu(p^j)1(p^{k-j})=
-\begin{cases}
-1-1+0+0+0...&&(k>0)\\
-1&&(k==0)
-\end{cases}
-\end{split}</script><p>即原命题成立</p>
-</blockquote>
-<p>3.对于任意正整数$N$，有：</p>
-<script type="math/tex; mode=display">
-\sum_{d|n} \mu(d)=[n==1]</script><p>其中$[$ &nbsp; $]$ 表示<strong>艾佛森括号</strong>，方括号其中的条件满足则为1，不满足则为0，即：</p>
-<script type="math/tex; mode=display">
-\begin{aligned}\\
-[P]&=1 &\text{(If P is true)}\\
-[P]&=0 &\text{(Otherwise)}
-\end{aligned}</script><p>证明：<br></p>
-<blockquote>
-<p>当$n=1$时，$\mu(n)=1$显然。<br><br>当</p>
-</blockquote>
-
+      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><del>这种神仙玩意儿一听就非常高端。</del>但是如果认真学习的话，还是比想象中的要简单的。<br><br><del>话说本来想拿去装13的却被初三小朋友痛斥过于娱乐…</del><br></p>
+      
+        <div class="readmore">
+          <a href="/2019/08/09/莫比乌斯反演/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
       
     </div>
     
       <div class="full-width auto-padding tags">
         
           <a href="/tags/数论/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>数论</a>
+        
+          <a href="/tags/莫比乌斯反演/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>莫比乌斯反演</a>
         
       </div>
     
@@ -1314,7 +1217,7 @@ h(n)
 </header>
 
     <div class="content material">
-      <a href="/tags/DP/" style="font-size: 14px; color: #999">DP</a> <a href="/tags/后缀数组/" style="font-size: 14px; color: #999">后缀数组</a> <a href="/tags/字符串/" style="font-size: 14px; color: #999">字符串</a> <a href="/tags/数据结构/" style="font-size: 14px; color: #999">数据结构</a> <a href="/tags/数论/" style="font-size: 14px; color: #999">数论</a> <a href="/tags/杂项/" style="font-size: 14px; color: #999">杂项</a> <a href="/tags/算法/" style="font-size: 24px; color: #555">算法</a> <a href="/tags/线段树/" style="font-size: 14px; color: #999">线段树</a> <a href="/tags/网络流/" style="font-size: 14px; color: #999">网络流</a> <a href="/tags/题解/" style="font-size: 24px; color: #555">题解</a>
+      <a href="/tags/DP/" style="font-size: 14px; color: #999">DP</a> <a href="/tags/后缀数组/" style="font-size: 14px; color: #999">后缀数组</a> <a href="/tags/字符串/" style="font-size: 14px; color: #999">字符串</a> <a href="/tags/数据结构/" style="font-size: 14px; color: #999">数据结构</a> <a href="/tags/数论/" style="font-size: 14px; color: #999">数论</a> <a href="/tags/杂项/" style="font-size: 14px; color: #999">杂项</a> <a href="/tags/算法/" style="font-size: 24px; color: #555">算法</a> <a href="/tags/线段树/" style="font-size: 14px; color: #999">线段树</a> <a href="/tags/网络流/" style="font-size: 14px; color: #999">网络流</a> <a href="/tags/莫比乌斯反演/" style="font-size: 14px; color: #999">莫比乌斯反演</a> <a href="/tags/题解/" style="font-size: 24px; color: #555">题解</a>
     </div>
   </section>
 
@@ -1612,5 +1515,21 @@ h(n)
 
 
   <script>setLoadingBarProgress(100);</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 </body>
 </html>
