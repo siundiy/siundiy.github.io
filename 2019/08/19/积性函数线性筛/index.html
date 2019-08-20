@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Tag: 算法 | 巨大的滑稽</title>
+  <title>积性函数线性筛 | 巨大的滑稽</title>
   
   
   <meta name="description" content="一个博客">
@@ -48,7 +48,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class="cover  half">
+    <cover class="cover post half">
       
         
   <h1 class="title">Just a Blog</h1>
@@ -214,29 +214,12 @@
 
   <div class="l_body">
     <div class='body-wrapper'>
-      
-<div class="l_main">
+      <div class="l_main">
   
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class="post-wrapper">
-            <article class="post reveal ">
+
   
+    <article id="post" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
+      
 
 
   <section class="meta">
@@ -245,11 +228,13 @@
     <div class="meta" id="header-meta">
       
         
-  <h2 class="title">
-    <a href="/2019/08/19/积性函数线性筛/">
-      积性函数线性筛
-    </a>
-  </h2>
+  
+    <h1 class="title">
+      <a href="/2019/08/19/积性函数线性筛/">
+        积性函数线性筛
+      </a>
+    </h1>
+  
 
 
       
@@ -288,6 +273,19 @@
         
           
             
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class="notlink">
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
 
           
         
@@ -304,254 +302,163 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有关积性函数的相关性质，请参考<a href="/2019/08/09/莫比乌斯反演/">莫比乌斯反演</a>。<br><br>与线性筛关系最大的便是以下性质：</p>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有关积性函数的相关性质，请参考<a href="/2019/08/09/莫比乌斯反演/">莫比乌斯反演</a>。<br><br>与线性筛关系最大的便是以下性质：</p>
 <blockquote>
-<p>$gcd(a,b)=1$时，满足$f(ab)=f(a)f(b)$<br></p></blockquote>
-      
-        <div class="readmore">
-          <a href="/2019/08/19/积性函数线性筛/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
+<p>$gcd(a,b)=1$时，满足$f(ab)=f(a)f(b)$<br><a id="more"></a></p>
+</blockquote>
+<h1 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h1><p>首先明确一点，所有的线性筛出积性函数的方法都是通过线性筛素数实现的。</p>
+<h2 id="如何筛素数？"><a href="#如何筛素数？" class="headerlink" title="如何筛素数？"></a>如何筛素数？</h2><h3 id="朴素筛法（复杂度-O-n-2-O-n-sqrt-n-）"><a href="#朴素筛法（复杂度-O-n-2-O-n-sqrt-n-）" class="headerlink" title="朴素筛法（复杂度$O(n^2)$~$O(n\sqrt {n})$）"></a>朴素筛法（复杂度$O(n^2)$~$O(n\sqrt {n})$）</h3><p>枚举每一个数和它的因子，如果只有1与它本身是它的因子，那么它就是质数。<br><br>因为所有$&gt;\sqrt{n}$的因子都可以被小于$\sqrt{n}$的因子表示，所以可以只枚举到$\sqrt{n}$，但是复杂度还是不够优秀。</p>
+<h3 id="埃氏筛（复杂度-O-nloglogn-）"><a href="#埃氏筛（复杂度-O-nloglogn-）" class="headerlink" title="埃氏筛（复杂度$O(nloglogn)$）"></a>埃氏筛（复杂度$O(nloglogn)$）</h3><p>思想就是从枚举因子转化为枚举倍数。<br><br>很明显质数的倍数都不是质数，所以对于每个质数，枚举其倍数，并将其标记成非质数。<br><br>很明显这样做的话会使得一些数被筛去好几次，比如6会被2和3筛去，造成了时间上的浪费。<br><br>虽然这种筛法在实际应用上有更好的代替，但是其将枚举因子转化为枚举倍数的思想却能够优化解决很多问题。</p>
+<h3 id="欧拉筛（复杂度-O-n-）"><a href="#欧拉筛（复杂度-O-n-）" class="headerlink" title="欧拉筛（复杂度$O(n)$）"></a>欧拉筛（复杂度$O(n)$）</h3><p>为了解决埃氏筛反复筛去一个数多次的问题，我们规定，每一个数只能被其最小的质因子删去。<br><br>通过代码进行进一步讲解<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fr(i, j, k) for(register int i = j; i &lt;= k; ++i)</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">40010</span>;</span><br><span class="line"><span class="keyword">int</span> prime[maxn], tot;</span><br><span class="line"><span class="keyword">char</span> vis[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">innt</span><span class="params">()</span></span>&#123;</span><br><span class="line">	vis[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	fr(i, <span class="number">2</span>, maxn - <span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!vis[i])prime[++tot] = i;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot &amp;&amp; i * prime[j] &lt;= maxn; ++j)&#123;</span><br><span class="line">			vis[i * prime[j]] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(i % prime[j] == <span class="number">0</span>) <span class="keyword">break</span>;<span class="comment">//关键点！！！！！！</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码中有一句：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(i % prime[j] == <span class="number">0</span>)<span class="keyword">break</span>;</span><br></pre></td></tr></table></figure></p>
+<p>正是这句话保证了每个数只会被其最小的质因子删去。</p>
+<h2 id="线性筛欧拉函数"><a href="#线性筛欧拉函数" class="headerlink" title="线性筛欧拉函数"></a>线性筛欧拉函数</h2><h3 id="欧拉函数定义"><a href="#欧拉函数定义" class="headerlink" title="欧拉函数定义"></a>欧拉函数定义</h3><p>欧拉函数是指小于x的整数中与x互质的数的个数，用$\varphi$表示，特殊的：$\varphi(1)=1$。</p>
+<h3 id="欧拉函数性质"><a href="#欧拉函数性质" class="headerlink" title="欧拉函数性质"></a>欧拉函数性质</h3><p>1.对于质数$p$, $\varphi(p)=p-1$</p>
+<blockquote>
+<p>根据定义显然</p>
+</blockquote>
+<p>2.对于质数$p$,<br><br>若$p$是$x$的约数，则$\varphi(x<em>p)=\varphi(x)</em>p$。<br><br>若p不是x的约数，则$\varphi(x<em>p)=\varphi(x)</em>\varphi(p)=\varphi(x)*(p-1)$。<br><br>证明：</p>
+<blockquote>
+<p>1.若$x\%p==0$则$i<em>p$的最小素因子的个数多了1，其余无变化<br><br>2.若$x\%p!=0$，因为$\varphi$s是积性函数，所以当$x$与$p$互质时$\varphi(x</em>p)=\varphi(x)*\varphi(p)$。</p>
+</blockquote>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fr(i, j, k) for(register int i = j; i &lt;= k; ++i)</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">40010</span>;</span><br><span class="line"><span class="keyword">int</span> prime[maxn], phi[maxn], tot;</span><br><span class="line"><span class="keyword">char</span> vis[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">innt</span><span class="params">()</span></span>&#123;</span><br><span class="line">	vis[<span class="number">1</span>] = <span class="number">1</span>, phi[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	fr(i, <span class="number">2</span>, maxn)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!vis[i])&#123;prime[++tot] = i;phi[i] = i - <span class="number">1</span>;&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot &amp;&amp; i * prime[j] &lt;= maxn; ++j)&#123;</span><br><span class="line">			vis[i * prime[j]] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(i % prime[j])&#123;</span><br><span class="line">				phi[i * prime[j]] = phi[i] * prime[j];</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			phi[i*prime[j]] = phi[i] * (prime[j] - <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="线性筛莫比乌斯函数"><a href="#线性筛莫比乌斯函数" class="headerlink" title="线性筛莫比乌斯函数"></a>线性筛莫比乌斯函数</h2><h3 id="莫比乌斯函数定义及性质"><a href="#莫比乌斯函数定义及性质" class="headerlink" title="莫比乌斯函数定义及性质"></a>莫比乌斯函数定义及性质</h3><p>请参考<a href="/2019/08/09/莫比乌斯反演/">莫比乌斯反演</a>。<br></p>
+<h3 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fr(i, j, k) for(register int i = j; i &lt;= k; ++i)</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">40010</span>;</span><br><span class="line"><span class="keyword">int</span> prime[maxn], mu[maxn], tot;</span><br><span class="line"><span class="keyword">char</span> vis[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">innt</span><span class="params">()</span></span>&#123;</span><br><span class="line">	mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	vis[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	fr(i, <span class="number">2</span>, maxn)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!vis[i])prime[++cnt] = i, mu[i] = <span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>, w; j &lt;= cnt &amp;&amp; (w = (i * prime[j])) &lt;= maxn; ++j)&#123;</span><br><span class="line">			vis[w] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(!(i % prime[j]))&#123;mu[w] = <span class="number">0</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">			<span class="keyword">else</span> mu[w]=-mu[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
         </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/数论/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>数论</a>
-        
-          <a href="/tags/算法/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>算法</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class="post-wrapper">
-            <article class="post reveal ">
-  
-
-
-  <section class="meta">
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/08/08/后缀数组哪里难？/">
-      后缀数组哪里难？
-    </a>
-  </h2>
-
-
-      
-      <div class="new-meta-box">
         
           
-        
-          
-            
-  <div class="new-meta-item author">
-    <a href="http://siundiy.com" rel="nofollow">
-      
-        <i class="fas fa-user" aria-hidden="true"></i>
-      
-      <p>siundiy</p>
-    </a>
-  </div>
 
 
-          
+  <section class="meta" id="footer-meta">
+    <hr>
+    <div class="new-meta-box">
+      
         
-          
-            <div class="new-meta-item date">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-08-20T19:02:58+08:00">
   <a class="notlink">
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-08-08</p>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年8月20日</p>
   </a>
 </div>
 
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h2><p>感谢</p>
-<blockquote>
-<p>2009年国家集训队论文<br><br><a href="https://www.cnblogs.com/victorique/p/8480093.html" target="_blank" rel="noopener">后缀数组 最详细讲解</a><br><br><a href="https://www.luogu.org/problemnew/solution/P3809" target="_blank" rel="noopener">luoguP3809 【模板】后缀排序 题解</a> <br><br><a href="https://www.luogu.org/problemnew/solution/P2408" target="_blank" rel="noopener">luoguP2408 不同子串个数 题解</a><br></p>
-</blockquote>
-<p>以及</p>
-<blockquote>
-<p>来自<del>ZhengRuIOI</del>的课件</p>
-</blockquote>
-<p>让本蒟蒻<del>大概</del>明白了这种算法<br></p>
-      
-        <div class="readmore">
-          <a href="/2019/08/08/后缀数组哪里难？/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/算法/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>算法</a>
-        
-          <a href="/tags/字符串/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>字符串</a>
-        
-          <a href="/tags/后缀数组/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>后缀数组</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
         
       
         
-          <div class="post-wrapper">
-            <article class="post reveal ">
+          
   
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/数论/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>数论</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/算法/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>算法</p></a></div>
 
 
-  <section class="meta">
-    
-    
-    <div class="meta" id="header-meta">
-      
         
-  <h2 class="title">
-    <a href="/2019/06/14/新式骗分——模拟退火/">
-      新式骗分——模拟退火
-    </a>
-  </h2>
-
-
       
-      <div class="new-meta-box">
         
           
-        
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=http://siundiy.com/2019/08/19/积性函数线性筛/&title=积性函数线性筛 | 巨大的滑稽&summary=前言有关积性函数的相关性质，请参考莫比乌斯反演。与线性筛关系最大的便是以下性质：
+
+$gcd(a,b)=1$时，满足$f(ab)=f(a)f(b)$">
           
-            
-  <div class="new-meta-item author">
-    <a href="http://siundiy.com" rel="nofollow">
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
       
-        <i class="fas fa-user" aria-hidden="true"></i>
+    
       
-      <p>siundiy</p>
-    </a>
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://siundiy.com/2019/08/19/积性函数线性筛/&title=积性函数线性筛 | 巨大的滑稽&summary=前言有关积性函数的相关性质，请参考莫比乌斯反演。与线性筛关系最大的便是以下性质：
+
+$gcd(a,b)=1$时，满足$f(ab)=f(a)f(b)$">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
   </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class="notlink">
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-06-14</p>
-  </a>
 </div>
 
-          
-        
-          
-            
 
-          
-        
-          
-            
 
-          
         
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
       
     </div>
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>博客咕咕咕的时间有点长(似乎是太长了)</p>
-<p>今天写一下模拟退火吧。。。发现了骗分的新大陆</p>
-<!-- （!--似乎是太长了--!） -->
-      
-        <div class="readmore">
-          <a href="/2019/06/14/新式骗分——模拟退火/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
         
-          <a href="/tags/算法/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>算法</a>
         
-      </div>
-    
-  </section>
-</article>
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/08/09/莫比乌斯反演/" rel="prev" title="莫比乌斯反演">
+                                    
+                                        莫比乌斯反演
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/数论/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>数论</a> <a class="tag" href="/tags/莫比乌斯反演/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>莫比乌斯反演</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
 
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
           </div>
-        
+        </section>
       
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
+    </section>
+  </article>
+
 
   
 
 
-    
-  
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '积性函数线性筛',
+      tools: true
+    }
+  </script>
+
+
 </div>
 <aside class="l_side">
   
@@ -599,6 +506,20 @@
           
           
             
+  <section class="widget toc-wrapper">
+    
+<header class="material">
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <div class="wrapper"><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class="content material">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现方法"><span class="toc-text">实现方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何筛素数？"><span class="toc-text">如何筛素数？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#朴素筛法（复杂度-O-n-2-O-n-sqrt-n-）"><span class="toc-text">朴素筛法（复杂度$O(n^2)$~$O(n\sqrt {n})$）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#埃氏筛（复杂度-O-nloglogn-）"><span class="toc-text">埃氏筛（复杂度$O(nloglogn)$）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#欧拉筛（复杂度-O-n-）"><span class="toc-text">欧拉筛（复杂度$O(n)$）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性筛欧拉函数"><span class="toc-text">线性筛欧拉函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#欧拉函数定义"><span class="toc-text">欧拉函数定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#欧拉函数性质"><span class="toc-text">欧拉函数性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性筛莫比乌斯函数"><span class="toc-text">线性筛莫比乌斯函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#莫比乌斯函数定义及性质"><span class="toc-text">莫比乌斯函数定义及性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现-1"><span class="toc-text">实现</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </section>
+
 
           
         
@@ -865,6 +786,36 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/js/volantis.min.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "HQgPdrp8LR5m8JxBstajtCks-gzGzoHsz",
+    appKey: "YGrCoqNlVr9sOgMtD07STxES",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'robohash',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
 
 
 
