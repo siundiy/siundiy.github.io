@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://siundiy.github.io/about/index.html</loc>
+    
+    <lastmod>2021-11-29T14:48:02.052Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://siundiy.github.io/friends/index.html</loc>
     
     <lastmod>2021-11-29T13:25:22.588Z</lastmod>
@@ -82,13 +89,6 @@
     <loc>http://siundiy.github.io/2019/08/01/2019-7%E9%A2%98%E8%A7%A3%E7%BB%BC%E5%90%88/</loc>
     
     <lastmod>2019-09-03T14:19:47.390Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://siundiy.github.io/about/index.html</loc>
-    
-    <lastmod>2019-08-11T00:34:11.464Z</lastmod>
     
   </url>
   
